@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mottoスポーツ塾 | 理学療法士によるマンツーマン指導</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #1A3A5C;
+      background: #FFFFFF;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== TOKENS ===== */
+    :root {
+      --orange:  #FF6B35;
+      --orange-light: #FF8F5C;
+      --teal:    #4ECDC4;
+      --teal-light: #72D9D2;
+      --navy:    #1A3A5C;
+      --navy-light: #2A527A;
+      --bg-light: #F7FBFC;
+      --bg-warm:  #FFF7F3;
+      --white:   #FFFFFF;
+      --text-main: #1A3A5C;
+      --text-sub:  #4A6480;
+    }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+    .section-badge {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      font-size: 0.93rem;
+      color: var(--text-sub);
+      margin-bottom: 40px;
+    }
+    .text-center { text-align: center; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 36px;
+      border-radius: 50px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(255,107,53,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 7px 20px rgba(255,107,53,0.4); }
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 11px 28px;
+      border-radius: 50px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+    /* ===== WAVY DIVIDER ===== */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .wave-divider svg { display: block; width: 100%; }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      background: var(--white);
+      border-bottom: 3px solid var(--teal);
+      padding: 14px 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .site-name {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .site-name span { color: var(--orange); }
+    .header-tel {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 700;
+      font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .header-tel .tel-label {
+      font-size: 0.7rem;
+      font-weight: 400;
+      display: block;
+      color: var(--text-sub);
+    }
+
+    /* ===== HERO IMAGE ===== */
+    .hero-image-wrap {
+      width: 100%;
+      max-height: 520px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-badge-overlay {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      line-height: 1.4;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    /* ===== HERO SECTION (TEXT BELOW IMAGE) ===== */
+    .hero-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 40px 0 50px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: var(--white);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .hero-title {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+    .hero-title em {
+      color: var(--orange);
+      font-style: normal;
+    }
+    .hero-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 560px;
+      margin: 0 auto 28px;
+      line-height: 1.8;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 12px;
+      padding: 14px 22px;
+      text-align: center;
+      min-width: 120px;
+    }
+    .hero-stat-num {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--orange);
+      display: block;
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ===== CONCEPT ===== */
+    .concept-section {
+      background: var(--white);
+      padding: 70px 0 60px;
+      text-align: center;
+    }
+    .concept-lead {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--text-sub);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    /* ===== STRENGTHS ===== */
+    .strengths-section {
+      background: var(--bg-light);
+      padding: 70px 0;
+      position: relative;
+    }
+    .strengths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 12px;
+    }
+    .strength-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 20px rgba(26,58,92,0.08);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .strength-card:hover { transform: translateY(-4px); }
+    .strength-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+    }
+    .strength-card:nth-child(1)::before { background: var(--orange); }
+    .strength-card:nth-child(2)::before { background: var(--teal); }
+    .strength-card:nth-child(3)::before { background: #FFD93D; }
+    .strength-icon {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .strength-title {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .strength-desc {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.75;
+    }
+
+    /* ===== PICKUP SERVICE (イチオシ) ===== */
+    .pickup-section {
+      background: var(--bg-warm);
+      padding: 70px 0;
+    }
+    .pickup-inner {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(255,107,53,0.12);
+    }
+    .pickup-header {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .pickup-crown {
+      font-size: 2rem;
+    }
+    .pickup-header-text {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .pickup-header-text small {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+    .pickup-body { padding: 32px 32px 36px; }
+    .pickup-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .pickup-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .pickup-dot {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+    .pickup-item-body {}
+    .pickup-item-title {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .pickup-item-desc {
+      font-size: 0.875rem;
+      color: var(--text-sub);
+      line-height: 1.75;
+    }
+    .pickup-highlight {
+      margin-top: 28px;
+      background: linear-gradient(135deg, #FFF3EE, #FFF8F0);
+      border: 2px dashed var(--orange);
+      border-radius: 14px;
+      padding: 18px 22px;
+      text-align: center;
+    }
+    .pickup-highlight-num {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--orange);
+    }
+    .pickup-highlight-label {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    /* ===== COMING SOON ===== */
+    .coming-section {
+      background: var(--white);
+      padding: 56px 0;
+    }
+    .coming-card {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 20px;
+      padding: 36px 32px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .coming-icon { font-size: 3rem; flex-shrink: 0; }
+    .coming-text {}
+    .coming-tag {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .coming-title {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .coming-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+    }
+
+    /* ===== REVIEWS ===== */
+    .reviews-section {
+      background: var(--bg-light);
+      padding: 70px 0;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 3px 16px rgba(26,58,92,0.07);
+      position: relative;
+    }
+    .review-card::before {
+      content: '❝';
+      position: absolute;
+      top: 16px; right: 20px;
+      font-size: 3rem;
+      color: var(--teal);
+      opacity: 0.2;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .review-stars {
+      color: #FFD93D;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .review-text {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.85;
+    }
+
+    /* ===== STORY ===== */
+    .story-section {
+      background: var(--white);
+      padding: 70px 0;
+    }
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .story-avatar {
+      background: linear-gradient(135deg, var(--teal-light), var(--teal));
+      border-radius: 20px;
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .story-avatar-icon { font-size: 4rem; display: block; margin-bottom: 12px; }
+    .story-avatar-name {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+    }
+    .story-avatar-role {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.85);
+      margin-top: 4px;
+    }
+    .story-body {}
+    .story-text {
+      font-size: 0.93rem;
+      color: var(--text-sub);
+      line-height: 2;
+    }
+    .story-qual {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .story-qual-tag {
+      background: var(--bg-light);
+      border: 1px solid var(--teal);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    /* ===== ACCESS ===== */
+    .access-section {
+      background: var(--bg-warm);
+      padding: 70px 0;
+    }
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .access-info dl { display: flex; flex-direction: column; gap: 14px; }
+    .access-info dl > div { display: flex; gap: 12px; font-size: 0.9rem; }
+    .access-info dt {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      min-width: 60px;
+      padding-top: 2px;
+    }
+    .access-info dd { color: var(--text-sub); line-height: 1.7; }
+    .access-info a { color: var(--teal); text-decoration: underline; }
+    .map-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(26,58,92,0.1);
+    }
+    .map-wrap iframe { width: 100%; display: block; }
+    .map-btn-wrap {
+      text-align: center;
+      margin-top: 14px;
+    }
+    .btn-map {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 11px 24px;
+      border-radius: 50px;
+      transition: background 0.15s;
+    }
+    .btn-map:hover { background: var(--navy-light); }
+
+    /* ===== SNS ===== */
+    .sns-section {
+      background: var(--white);
+      padding: 56px 0;
+      text-align: center;
+    }
+    .sns-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .sns-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .sns-link:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+    .sns-link-instagram {
+      background: linear-gradient(45deg, #F09433 0%, #E6683C 25%, #DC2743 50%, #CC2366 75%, #BC1888 100%);
+      color: var(--white);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 48px 0 28px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    .footer-brand {}
+    .footer-logo {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--orange); }
+    .footer-desc {
+      font-size: 0.82rem;
+      line-height: 1.75;
+    }
+    .footer-nav h4 {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .footer-nav a { font-size: 0.88rem; color: rgba(255,255,255,0.75); transition: color 0.15s; }
+    .footer-nav a:hover { color: var(--orange); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      font-size: 0.78rem;
+      text-align: center;
+    }
+    .footer-official-link {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--white);
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 9px 22px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      transition: background 0.15s;
+    }
+    .footer-official-link:hover { background: rgba(255,255,255,0.2); }
+
+    /* ===== FLOATING CTA ===== */
+    .float-cta {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      gap: 10px;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.2));
+    }
+    .float-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 13px 22px;
+      border-radius: 50px;
+      white-space: nowrap;
+      transition: transform 0.15s;
+    }
+    .float-btn:hover { transform: scale(1.03); }
+    .float-btn-tel {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .float-btn-sns {
+      background: linear-gradient(45deg, #E6683C, #DC2743, #CC2366);
+      color: var(--white);
+    }
+    .float-btn-lesson {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(255,107,53,0.45);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 680px) {
+      .hero-image-wrap img { height: 260px; }
+      .hero-title { font-size: 1.4rem; }
+      .story-inner { grid-template-columns: 1fr; }
+      .story-avatar { display: flex; align-items: center; gap: 16px; padding: 20px; text-align: left; }
+      .story-avatar-icon { font-size: 2.5rem; }
+      .access-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .float-cta { gap: 8px; bottom: 12px; }
+      .float-btn { font-size: 0.82rem; padding: 12px 16px; }
+      .pickup-header { padding: 20px; }
+      .pickup-body { padding: 20px 20px 24px; }
+      .coming-card { padding: 24px 20px; }
+    }
+    @media (max-width: 400px) {
+      .hero-stats { gap: 12px; }
+      .hero-stat { padding: 12px 16px; min-width: 100px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="https://motto-bodycare.com/" target="_blank" rel="noopener" class="site-name">
+          <span>Motto</span>スポーツ塾
+        </a>
+        <div class="header-tel">
+          <span class="tel-label">お電話でのお問い合わせ</span>
+          <a href="tel:0582074058">058-207-4058</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO IMAGE ===== -->
+  <div class="hero-image-wrap">
+    <img src="images/hero.jpg" alt="Mottoスポーツ塾 理学療法士によるマンツーマン指導">
+    <div class="hero-badge-overlay">理学療法士<br>在籍</div>
+  </div>
+
+  <!-- ===== HERO TEXT SECTION ===== -->
+  <section class="hero-section">
+    <div class="container">
+      <span class="hero-eyebrow">マンツーマン指導のスポーツ塾</span>
+      <h1 class="hero-title">
+        体の「なぜ」から解き明かす<br>
+        <em>オーダーメイド</em>のトレーニング
+      </h1>
+      <p class="hero-desc">
+        理学療法士の知見と「遊び感覚」を融合させた指導で、<br>
+        運動が苦手なお子さんでも楽しみながら確かな成長を実感できます。
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">1対1</span>
+          <span class="hero-stat-label">完全マンツーマン</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">10年+</span>
+          <span class="hero-stat-label">理学療法士経験</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">🏆</span>
+          <span class="hero-stat-label">多くの子どもが成長を実感</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+        <a href="https://motto-bodycare.com/application/" target="_blank" rel="noopener" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;">✨ 体験レッスンを予約する</a>
+        <a href="tel:0582074058" class="btn-outline" style="background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.6); color:#fff;">📞 電話で相談する</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONCEPT ===== -->
+  <section class="concept-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">Mottoスポーツ塾について</span>
+        <h2 class="section-title">「遊び感覚」で、<br>体の根本から変わる</h2>
+      </div>
+      <p class="concept-lead text-center">
+        「うちの子、運動が苦手で…」「姿勢が悪いのが気になる」<br>
+        そんな悩みに、理学療法士が解剖学・運動学の視点で向き合います。<br>
+        辛いトレーニングではなく、楽しみながら体の使い方を根本から整えることで、<br>
+        自信と運動能力を一緒に育てていきます。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== STRENGTHS ===== -->
+  <section class="strengths-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">選ばれる3つの理由</span>
+        <h2 class="section-title">Mottoスポーツ塾の強み</h2>
+        <p class="section-sub">他とは一線を画す、本質的なアプローチ</p>
+      </div>
+      <div class="strengths-grid">
+        <div class="strength-card">
+          <span class="strength-icon">🎯</span>
+          <p class="strength-title">オーダーメイドの<br>マンツーマン指導</p>
+          <p class="strength-desc">理学療法士の資格を持つトレーナーが、お子さん一人ひとりの体の特徴やクセを丁寧に分析。その子だけの最適なトレーニングをご提供します。</p>
+        </div>
+        <div class="strength-card">
+          <span class="strength-icon">🎮</span>
+          <p class="strength-title">「遊び感覚」で<br>楽しく続けられる</p>
+          <p class="strength-desc">辛い筋トレではなく、遊びの要素を取り入れた独自の指導スタイル。運動が苦手なお子さんでも夢中になって取り組めます。</p>
+        </div>
+        <div class="strength-card">
+          <span class="strength-icon">🧠</span>
+          <p class="strength-title">成果が出る<br>効率的プログラム</p>
+          <p class="strength-desc">正しい姿勢と体の使い方を習得することで、少ないレッスン回数でも運動能力の向上や姿勢改善を実感できる効率的な設計です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PICKUP SERVICE ===== -->
+  <section class="pickup-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 28px;">
+        <span class="section-badge">イチオシサービス</span>
+        <h2 class="section-title">マンツーマン指導</h2>
+        <p class="section-sub">Mottoスポーツ塾が最も自信を持ってお届けするプログラム</p>
+      </div>
+      <div class="pickup-inner">
+        <div class="pickup-header">
+          <span class="pickup-crown">👑</span>
+          <div class="pickup-header-text">
+            Mottoスポーツ塾のメインプログラム
+            <small>理学療法士によるパーソナルトレーニング</small>
+          </div>
+        </div>
+        <div class="pickup-body">
+          <ul class="pickup-list">
+            <li class="pickup-item">
+              <span class="pickup-dot">🔬</span>
+              <div class="pickup-item-body">
+                <p class="pickup-item-title">理学療法士の知見による科学的指導</p>
+                <p class="pickup-item-desc">解剖学・運動学の視点から「体の正しい使い方」を論理的に指導。なんとなくではなく、根拠のあるトレーニングでお子さんの体を変えます。</p>
+              </div>
+            </li>
+            <li class="pickup-item">
+              <span class="pickup-dot">🏃</span>
+              <div class="pickup-item-body">
+                <p class="pickup-item-title">姿勢と体幹の根本改善</p>
+                <p class="pickup-item-desc">単なる筋トレではなく、姿勢を整え体幹を鍛えることで、運動能力の向上と怪我の予防を同時に目指します。将来のスポーツの土台を作ります。</p>
+              </div>
+            </li>
+            <li class="pickup-item">
+              <span class="pickup-dot">💪</span>
+              <div class="pickup-item-body">
+                <p class="pickup-item-title">メンタル面の成長も大切に</p>
+                <p class="pickup-item-desc">運動だけでなく「自分で考えて動く力」や「自己肯定感」を育むアプローチを大切にしています。心と体、両方の成長をサポートします。</p>
+              </div>
+            </li>
+          </ul>
+          <div class="pickup-highlight">
+            <p class="pickup-highlight-num">多くのお子さんが目標達成を実感</p>
+            <p class="pickup-highlight-label">効率的なプログラムにより、少ないレッスン回数でも成長を感じていただいています</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMING SOON ===== -->
+  <section class="coming-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 24px;">
+        <span class="section-badge">準備中のサービス</span>
+        <h2 class="section-title">近日公開予定</h2>
+      </div>
+      <div class="coming-card">
+        <span class="coming-icon">📸</span>
+        <div class="coming-text">
+          <span class="coming-tag">COMING SOON</span>
+          <p class="coming-title">姿勢診断フィードバックサービス</p>
+          <p class="coming-desc">お子さんの姿勢を撮影し、専門家の視点から詳しく分析・フィードバックするサービスを準備中です。まずはお気軽にお電話でご相談ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">お客様の声</span>
+        <h2 class="section-title">喜びの声をいただいています</h2>
+        <p class="section-sub">通ってくださっているお子さん・保護者様より</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">個人にあった体幹トレーニングをコーディネートして頂けるところが魅力的です。子どもも楽しくトレーニングさせて頂いています。</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">個人レッスンなので、個々の弱い部分に積極的にアプローチしてもらい、動きが目に見えて改善されてきました。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOUNDER STORY ===== -->
+  <section class="story-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 40px;">
+        <span class="section-badge">創業者ストーリー</span>
+        <h2 class="section-title">なぜMottoスポーツ塾を<br>立ち上げたのか</h2>
+      </div>
+      <div class="story-inner">
+        <div class="story-avatar">
+          <span class="story-avatar-icon">👩‍⚕️</span>
+          <p class="story-avatar-name">臼井 美由紀</p>
+          <p class="story-avatar-role">Mottoスポーツ塾 代表</p>
+        </div>
+        <div class="story-body">
+          <p class="story-text">
+            理学療法士として10年以上病院に勤務した臼井美由紀は、怪我に苦しむ子どもたちの姿勢や体の硬さに強い危機感を覚えました。
+          </p>
+          <p class="story-text" style="margin-top: 14px;">
+            「怪我が起きてから治すのではなく、怪我が起きる前に根本的な解決を」——その想いを胸に、Mottoスポーツ塾を設立。
+          </p>
+          <p class="story-text" style="margin-top: 14px;">
+            独自の身体理論と心のサポートを融合させ、子どもたちが自信を持って自分らしく輝ける未来を創り続けています。
+          </p>
+          <div class="story-qual">
+            <span class="story-qual-tag">理学療法士（国家資格）</span>
+            <span class="story-qual-tag">10年以上の臨床経験</span>
+            <span class="story-qual-tag">子どもの体・心の専門家</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACCESS ===== -->
+  <section class="access-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 40px;">
+        <span class="section-badge">アクセス</span>
+        <h2 class="section-title">道案内</h2>
+      </div>
+      <div class="access-grid">
+        <div class="access-info">
+          <dl>
+            <div>
+              <dt>教室名</dt>
+              <dd>Mottoスポーツ塾</dd>
+            </div>
+            <div>
+              <dt>住所</dt>
+              <dd>〒501-0222<br>岐阜県瑞穂市別府６２０−３<br>グランドステージミズタ2F</dd>
+            </div>
+            <div>
+              <dt>電話</dt>
+              <dd><a href="tel:0582074058">058-207-4058</a></dd>
+            </div>
+            <div>
+              <dt>公式HP</dt>
+              <dd><a href="https://motto-bodycare.com/" target="_blank" rel="noopener">https://motto-bodycare.com/</a></dd>
+            </div>
+          </dl>
+          <div style="margin-top: 28px;">
+            <a href="tel:0582074058" class="btn-primary" style="display:inline-block; font-size: 0.95rem;">📞 電話でお問い合わせ</a>
+          </div>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3252.4371726704685!2d136.69409249999998!3d35.3944129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003ae723d6c723d%3A0xdaad7b3e960b13da!2zTW90dG_jgrnjg53jg7zjg4Tlob4!5e0!3m2!1sja!2sjp!4v1792475751651!5m2!1sja!2sjp" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <div class="map-btn-wrap">
+            <a href="https://www.google.com/maps/place/Motto%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84%E5%A1%BE/@35.3944129,136.6940925,17z/data=!3m1!4b1!4m6!3m5!1s0x6003ae723d6c723d:0xdaad7b3e960b13da!8m2!3d35.3944129!4d136.6940925!16s%2Fg%2F11gf986sqh?authuser=0&entry=ttu&g_ep=EgoyMDI2MTAxOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn-map">
+              🗺️ Googleマップで見る
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRIAL CTA ===== -->
+  <section style="background: linear-gradient(135deg, var(--orange) 0%, #FF4500 100%); padding: 64px 0; text-align: center;">
+    <div class="container">
+      <p style="font-family:'M PLUS Rounded 1c',sans-serif; font-size:0.85rem; font-weight:700; color:rgba(255,255,255,0.85); letter-spacing:0.1em; margin-bottom:10px;">TRIAL LESSON</p>
+      <h2 style="font-family:'M PLUS Rounded 1c',sans-serif; font-size:clamp(1.5rem,4vw,2rem); font-weight:900; color:#fff; line-height:1.35; margin-bottom:12px;">
+        まずは体験レッスンから<br>はじめましょう！
+      </h2>
+      <p style="font-size:0.93rem; color:rgba(255,255,255,0.88); margin-bottom:32px; line-height:1.8;">
+        お子さんの体の状態や目標をじっくりヒアリングした上で、<br>
+        一人ひとりに合わせたトレーニングを体験いただけます。
+      </p>
+      <a href="https://motto-bodycare.com/application/" target="_blank" rel="noopener"
+        style="display:inline-block; background:#fff; color:var(--orange); font-family:'M PLUS Rounded 1c',sans-serif; font-weight:900; font-size:1.1rem; padding:18px 48px; border-radius:50px; box-shadow:0 6px 24px rgba(0,0,0,0.2); transition:transform 0.15s, box-shadow 0.15s;"
+        onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.25)';"
+        onmouseout="this.style.transform=''; this.style.boxShadow='0 6px 24px rgba(0,0,0,0.2)';">
+        ✨ 体験レッスンを予約する
+      </a>
+      <p style="margin-top:16px; font-size:0.8rem; color:rgba(255,255,255,0.7);">お電話でもお気軽にご相談ください &nbsp;📞&nbsp; <a href="tel:0582074058" style="color:#fff; text-decoration:underline;">058-207-4058</a></p>
+    </div>
+  </section>
+
+  <!-- ===== SNS ===== -->
+  <section class="sns-section">
+    <div class="container">
+      <span class="section-badge">SNS</span>
+      <h2 class="section-title">フォローしてください</h2>
+      <p class="section-sub">最新情報やトレーニングのヒントを発信中！</p>
+      <div class="sns-links">
+        <a href="https://www.instagram.com/motto.bodycare/" target="_blank" rel="noopener" class="sns-link sns-link-instagram">
+          <!-- Instagram SVG公式アイコン -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5.5" fill="white" fill-opacity="0.25"/>
+            <path d="M12 7C9.238 7 7 9.238 7 12C7 14.762 9.238 17 12 17C14.762 17 17 14.762 17 12C17 9.238 14.762 7 12 7ZM12 15.333C10.159 15.333 8.667 13.841 8.667 12C8.667 10.159 10.159 8.667 12 8.667C13.841 8.667 15.333 10.159 15.333 12C15.333 13.841 13.841 15.333 12 15.333Z" fill="white"/>
+            <circle cx="17.2" cy="6.8" r="1.2" fill="white"/>
+          </svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <p class="footer-logo"><span>Motto</span>スポーツ塾</p>
+          <p class="footer-desc">
+            理学療法士によるマンツーマン指導で、<br>
+            子どもの体と心を根本から育てるスポーツ塾。<br>
+            岐阜県瑞穂市にて開講中。
+          </p>
+        </div>
+        <nav class="footer-nav">
+          <h4>LINKS</h4>
+          <ul>
+            <li><a href="https://motto-bodycare.com/" target="_blank" rel="noopener">🌐 公式ウェブサイト</a></li>
+            <li><a href="tel:0582074058">📞 058-207-4058</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="text-center">
+        <a href="https://motto-bodycare.com/" target="_blank" rel="noopener" class="footer-official-link">
+          🌐 公式サイトを見る
+        </a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Mottoスポーツ塾 All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING CTA ===== -->
+  <div class="float-cta">
+    <a href="tel:0582074058" class="float-btn float-btn-tel">
+      📞 電話で相談する
+    </a>
+    <a href="https://motto-bodycare.com/application/" target="_blank" rel="noopener" class="float-btn float-btn-lesson">
+      ✨ 体験レッスン予約
+    </a>
+  </div>
+
+  <!-- floating CTAの下余白確保 -->
+  <div style="height: 80px; background: var(--navy);"></div>
+
+</body>
+</html>
